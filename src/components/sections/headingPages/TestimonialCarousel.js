@@ -1,24 +1,31 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
+import React, { useEffect } from 'react';
 import TestimonialCard from './CardInfo/TestimonialCard';
 export default function CarouselPage() {
-    return (
-        <Carousel infiniteLoop={true} autoPlay={true} Interval={5000} showStatus={false}>
-            <TestimonialCard name="Micheal Caldwell" description="This is the best Mediterranean food that I've ever had!"/>
-            <TestimonialCard name="Alan Chen" description="My Shiba Inu, Mugi, really loved the cozy vibes and 
-                delicious food here."/>
-            <TestimonialCard name="Casey Lau" description="I've had some great Mediterranean food before, but none of them beats
-             Little Lemon in flavor and texture."/>
-            <TestimonialCard name="John Rosenblum" description="Great food, welcoming staff, cozy atmosphere. A great place to 
-                treat your kids to."/>
-            <TestimonialCard name="Jim Reynor" description="The food here really refreshed me after a late night shift
-                at the local supply depot."/>
-            <TestimonialCard name="Brian Dean" description="I came to Little Lemon after a 5 hour flight from the East Coast.
-                 The food here tasted so delicious after the trip here."/>
-            <TestimonialCard name="Tyler Tohmine" description="The food here was fire!! Everyone should try this place
-                 out at least once if they live in Chicago."/>
-            <TestimonialCard name="Jack Hu" description="This restaurant served as a perfect dinner for me after a 
-                long night of studying. I would definitely order from here again!"/>
-             </Carousel>
-    )
-}
+    const testimonials = [
+        { name: "Alex Johnson", description: "Absolutely loved the vibrant flavors at Spice Haven. It's a must-visit for anyone who loves exploring new tastes." },
+        { name: "Samantha Lee", description: "The cozy ambiance and the warm, spicy aroma made my evening unforgettable. Highly recommend their chef's special." },
+        { name: "Ethan Wright", description: "A culinary journey that takes your taste buds on an adventure. The fusion dishes are phenomenal." },
+        { name: "Olivia Smith", description: "Such a delightful experience! The dishes are crafted with care, and the staff goes above and beyond." },
+        { name: "Daniel Kim", description: "From the appetizers to the desserts, every dish was a hit. Spice Haven truly knows how to deliver an exceptional dining experience." },
+      ];
+      const [currentIndex, setCurrentIndex] = React.useState(0);
+
+      const nextTestimonial = () => {
+          setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
+      };
+  
+      const prevTestimonial = () => {
+          setCurrentIndex((prevIndex) => (prevIndex - 1 + testimonials.length) % testimonials.length);
+      };
+
+      return (
+          <div className="carousel">
+              <button className="prev" onClick={prevTestimonial}>Prev</button>
+              <div className="testimonial-card">
+                  <h2>{testimonials[currentIndex].name}</h2>
+                  <p>{testimonials[currentIndex].description}</p>
+              </div>
+              <button className="next" onClick={nextTestimonial}>Next</button>
+          </div>
+      );
+  }
