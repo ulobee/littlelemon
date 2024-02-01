@@ -6,7 +6,7 @@ export default function Navigation(props) {
       {props.device === "mobile" ? (
         ""
       ) : (
-        <Link to="/">
+        <Link className="logo" to="/">
           <img
             src={require("../assets/nav-logo.png")}
             alt="Little Lemon logo"
@@ -14,11 +14,12 @@ export default function Navigation(props) {
           ></img>
         </Link>
       )}
+<h3 className="empty">&nbsp;</h3> 
       <Link className="hover-effect" to="/">
-        <h1>Home</h1>
+        <h3>Home</h3>
       </Link>
       <Link className="hover-effect" to="/about">
-        <h1>About</h1>
+        <h3>About</h3>
       </Link>
       <a
         className="hover-effect"
@@ -26,17 +27,18 @@ export default function Navigation(props) {
         target="_blank"
         rel="noreferrer"
       >
-        <h1>Menu</h1>
+        <h3>Menu</h3>
       </a>
       <Link className="hover-effect" to="/reservations">
-        <h1>Reservations</h1>
+        <h3>Reservations</h3>
       </Link>
       <Link className="hover-effect" to="/order">
-        <h1>Order</h1>
+        <h3>Order</h3>
       </Link>
       <Link className="hover-effect" to="/login">
-        <h1>Login</h1>
+        <h3>Login</h3>
       </Link>
+
     </menu>
   );
 }
